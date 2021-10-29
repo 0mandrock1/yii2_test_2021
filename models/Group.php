@@ -25,7 +25,19 @@ class Group extends \yii\db\ActiveRecord
         return 'group';
     }
 
-
+    public function fields()
+    {   $this->groupUserAges();
+        $this->childGroups();
+        return [
+            'id',
+            'name',
+            'parent_id',
+            'youngest_user',
+            'oldest_user',
+            'avg_age',
+            'child_groups'
+        ];
+    }
 
     /**
      * Method, which fills properties with child groups
