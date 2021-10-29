@@ -11,6 +11,11 @@ namespace app\models;
  */
 class Group extends \yii\db\ActiveRecord
 {
+    public $youngest_user;
+    public $oldest_user;
+    public $avg_age;
+    public $child_groups;
+
     const STATUS_REQUEST =0;
     /**
      * @inheritdoc
