@@ -24,4 +24,32 @@ class Group extends \yii\db\ActiveRecord
     {
         return 'group';
     }
+
+
+
+    /**
+     * Method, which fills properties with child groups
+     */
+    public function childGroups() {
+        $child_groups = self::find()
+            ->where([ 'parent_id' => $this->id ])
+            ->all();
+        $this->child_groups = $child_groups;
+    }
+
+    /**
+     * Method, which fills properties with information about group users age info
+     */
+    private function groupUserAges() {
+        $users = User::find()
+            ->where([ 'group_id' => $this->id])
+            ->asArray()
+            ->all();
+        $age_info = User::age($users);
+        $this->youngest_user = $age_info['youngest_user'];
+        $this->oldest_user = $age_info['oldest_user'];
+        $this->avg_age = $age_info['avg_age'];
+    }
+
+
 }
