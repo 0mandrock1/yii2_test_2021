@@ -53,7 +53,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'group'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => [ 'group-info' => 'group' ]],
             ],
         ],
 
